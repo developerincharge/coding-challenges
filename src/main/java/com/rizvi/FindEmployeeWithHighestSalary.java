@@ -29,8 +29,11 @@ public class FindEmployeeWithHighestSalary {
                 new Employee(16, "Rizvi", 65, "DEV", 100000),
                 new Employee(17, "Haider", 19,"BA", 70000)).collect(Collectors.toList());
 
+         System.out.println("================================== Highest Max Salary  ===================================");
         employees.stream().max((e1, e2) -> e1.getSalary() > e2.getSalary() ? 1 : -1).ifPresent(System.out::println);
 
+        System.out.println("================================ By using Function Max Salary 2nd method ===================================");
+        employees.stream().max(Comparator.comparing(Employee::getSalary)).ifPresent(System.out::println);
         System.out.println("==================================  Comparator  ===================================");
         Comparator<Employee> comparingBySalary = Comparator.comparing(Employee::getSalary);
         Map<String, Optional<Employee>> map  =  employees.stream().collect(Collectors.groupingBy(Employee::getDept,
@@ -90,5 +93,12 @@ public class FindEmployeeWithHighestSalary {
 
         Comparator<Employee> sortByNameAndAge = Comparator.comparing(Employee::getName).thenComparing(Employee::getAge);
         employees.stream().sorted(sortByNameAndAge).forEach(System.out::println);
+
+        System.out.println("=====================================  Comparator using SortEmployeeBySalary()  ===============================");
+
+
+        //employees.sort(new SortEmployeeBySalaryAsc());
+        employees.sort(new SortEmployeeBySalaryDesc());
+        employees.forEach(System.out::println);
     }
 }

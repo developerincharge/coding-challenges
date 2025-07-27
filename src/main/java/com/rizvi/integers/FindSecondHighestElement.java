@@ -30,5 +30,21 @@ public class FindSecondHighestElement {
             System.out.println("Second highest element in the array is : " + SecondHighestElement);
 
         }
+
+
+        Arrays.stream(numbers)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .skip(1).findFirst()
+                .ifPresent(str -> System.out.println("Second highest element in the array is : " + str));
+
+
+
+        Arrays.stream(numbers)
+                .boxed()
+                .sorted()
+                .skip(1).findFirst()
+                .ifPresent(str -> System.out.println("Second Lowest element in the array is : " + str));
+
     }
 }

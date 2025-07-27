@@ -16,11 +16,23 @@ public class FindDuplicateElementFromString {
                              .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                              .entrySet().stream().filter(ele -> ele.getValue() > 1)
                              .map(Map.Entry::getKey)
-
-
-                    .collect(Collectors.toList());
+                             .toList();
 
                 System.out.println("all duplicate characters are : " + collect);
+
+
+             List<String> fruits  = Arrays.asList("Apple", "Mango", "Banana", "Apple", "Kiwi", "Mango", "Mango");
+
+                 List<String> distinctFruits =  fruits.stream()
+                         .distinct()
+                         .collect(Collectors.toList());
+                 System.out.println(distinctFruits);
+
+                 fruits.stream().map(String::toUpperCase).forEach(System.out::println);
+
+                 long count = fruits.stream().filter(f -> f.startsWith("M")).count();
+                 System.out.println("Count of Mango : " + count);
+
 
     }
 }
