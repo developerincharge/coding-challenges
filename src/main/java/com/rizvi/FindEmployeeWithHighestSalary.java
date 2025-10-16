@@ -29,37 +29,50 @@ public class FindEmployeeWithHighestSalary {
                 new Employee(16, "Rizvi", 65, "DEV", 100000),
                 new Employee(17, "Haider", 19,"BA", 70000)).collect(Collectors.toList());
 
-         System.out.println("================================== Highest Max Salary  ===================================");
+        // find the highest salaried employee in  Dev - QA  - BA
+        Comparator<Employee> comparingBySalary = Comparator.comparing(Employee::getSalary);
+
+        System.out.println();
+         System.out.println("================ Highest Max Salary  ==================\n");
+
         employees.stream().max((e1, e2) -> e1.getSalary() > e2.getSalary() ? 1 : -1).ifPresent(System.out::println);
 
-        System.out.println("================================ By using Function Max Salary 2nd method ===================================");
-        employees.stream().max(Comparator.comparing(Employee::getSalary)).ifPresent(System.out::println);
-        System.out.println("==================================  Comparator  ===================================");
-        Comparator<Employee> comparingBySalary = Comparator.comparing(Employee::getSalary);
-        Map<String, Optional<Employee>> map  =  employees.stream().collect(Collectors.groupingBy(Employee::getDept,
-                Collectors.reducing(BinaryOperator.maxBy(comparingBySalary))));
+        System.out.println();
+        System.out.println("===== Function to find Max salaried Employees by comparing Salary =====\n");
+
+        employees.stream().max(comparingBySalary).ifPresent(System.out::println);
+
+        System.out.println();
+        System.out.println("==== With Function Max salaried employee in each dept using Comparator  ====\n");
+
+        Map<String, Optional<Employee>> map = employees.stream().collect(Collectors.
+                groupingBy(Employee::getDept, Collectors.reducing(BinaryOperator.maxBy(comparingBySalary))));
         System.out.println(map);
 
-        System.out.println("==========================  Sort() Comparing by name =============================");
+        System.out.println();
+        System.out.println("========  Sort() to find list all employees ========\n");
+
 
         employees.sort((e1, e2) -> e1.getName().compareTo(e2.getName()));
         employees.forEach(emp -> System.out.println(emp));
 
-        System.out.println("====================================  using Comparator and Method Reference ===================================");
+        System.out.println();
+        System.out.println("==========  using Comparator and Method Reference ===========\n");
+
 
         employees.sort(Comparator.comparing(Employee::getName));
         employees.forEach(System.out::println);
-        System.out.println("==============================  Comparator thenComparing by Name and Age   ==============================");
+
+        System.out.println();
+        System.out.println("==========  using Comparator and thenComparing by Name and Age   ===========\n");
+
 
         employees.sort(Comparator.comparing(Employee::getName).thenComparing(Employee::getAge));
         employees.forEach(System.out::println);
 
+        System.out.println();
+        System.out.println("=========   Comparator comparing Salary in each dept   ==========\n");
 
-        System.out.println("===========================   Comparator comparing Employee Salary    ===============================");
-        employees.stream().max(Comparator.comparing(Employee::getSalary)).ifPresent(System.out::println);
-
-
-        System.out.println("=================================   Comparator comparing Employee Salary   ===============================");
 
         Map<String, Employee> map1 = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDept,
@@ -69,8 +82,9 @@ public class FindEmployeeWithHighestSalary {
 
         map1.forEach((k, v) -> System.out.println(k + " " + v.getSalary()));
 
+        System.out.println();
+        System.out.println("==========  Comparator comparing Employee Age in each dept ==========\n");
 
-        System.out.println("=====================================  Comparator comparing Employee Age  ===============================");
 
         Map<String, Employee> map2 = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDept,
@@ -80,22 +94,23 @@ public class FindEmployeeWithHighestSalary {
 
         map2.forEach((k, v) -> System.out.println(k + " " + v.getAge()));
 
+        System.out.println();
+        System.out.println("=======  Create Comparator for Employees Name and Age  =======\n");
 
-        System.out.println("=====================================  Create Comparator for Employees Name and Age  ===============================");
 
          Comparator<Employee> sortingByName = (emp1, emp2) -> emp1.getName().compareTo(emp2.getName());
          Comparator<Employee> SortingByAge = (emp1, emp2) -> emp1.getAge() - emp2.getAge();
          Comparator<Employee>sortingEmployeesByNameAndAge = sortingByName.thenComparing(SortingByAge);
         employees.stream().sorted(sortingEmployeesByNameAndAge).forEach(System.out::println);
 
+        System.out.println();
+        System.out.println("============ Create Comparator for Employees Name and Age  =============\n");
 
-        System.out.println("=====================================  Comparator for Employees Name and Age  ===============================");
 
         Comparator<Employee> sortByNameAndAge = Comparator.comparing(Employee::getName).thenComparing(Employee::getAge);
         employees.stream().sorted(sortByNameAndAge).forEach(System.out::println);
-
-        System.out.println("=====================================  Comparator using SortEmployeeBySalary()  ===============================");
-
+        System.out.println();
+        System.out.println("=== Overriding Comparator method using SortEmployeeBySalaryDesc() from other class ===\n");
 
         //employees.sort(new SortEmployeeBySalaryAsc());
         employees.sort(new SortEmployeeBySalaryDesc());

@@ -23,7 +23,7 @@ public class EvenOdd {
                 .forEach(System.out::println);
 
 
-        System.out.println("####################");
+        System.out.println("############  Reversed order ##########");
 
         numbers.stream()
                 .sorted(Comparator.comparingInt(Integer::intValue).reversed())
@@ -31,15 +31,15 @@ public class EvenOdd {
 
 
 
-        int[] arr = new int[] {10, 24, 25, 21, 86, 95, 100};
+        int[] arr = new int[] {12, 67, 86, 53, 11, 90, 82, 86, 25};
 
-        System.out.println("##################");
+        System.out.println("############# Ascending Order ############");
         Arrays.stream(arr)
                // .boxed()
                 //.map(nums -> nums % 2 == 0 ? "Even" : "Odd")
-                .mapToObj(num -> Integer.valueOf(num))
-               // .sorted((a,b)-> b-a)
-                .sorted(Comparator.comparing(Integer::valueOf))
+                .boxed()
+                .sorted((a,b)-> a-b)
+               // .sorted(Comparator.comparing(Integer::valueOf))
                 .forEach(System.out::println);
     }
 }

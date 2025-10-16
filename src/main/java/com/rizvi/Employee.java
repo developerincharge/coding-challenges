@@ -8,6 +8,8 @@ public class Employee {
     private String dept;
     private double salary;
 
+    public Employee(){}
+
     public Employee(Integer id, String name, int age,String dept, double salary) {
         this.id = id;
         this.name = name;
