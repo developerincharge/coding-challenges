@@ -14,25 +14,24 @@ public class CountNumberOfString {
         TreeMap<String, Integer> sortedItems = new TreeMap<>(countItem);
         sortedItems.forEach((key, value) -> System.out.println(key + " -> " + value));
 
-        List<String> list = new ArrayList<>(Arrays.asList("dog","cat","elephant","Java","cat","python","learprograming","dog", "java"));
+        System.out.println(sortedItems);
 
-        List<String> resultList = new ArrayList<>();
+        //List<String> list = new ArrayList<>(Arrays.asList("dog","cat","elephant","Java","cat","python","learprograming","dog", "java"));
 
-
-
-        list.forEach((str)-> {
-            String newValue = lengthTransform(str);
-            resultList.add(newValue);
-        });
-        System.out.println(resultList);
-
-    }
-
-     private static String lengthTransform(String str) {
-          return  " Length for String : " + str  + " is " + str.length();
+      //  List<String> resultList = new ArrayList<>();
 
 
 
+//        list.forEach((str)-> {
+//            String newValue = lengthTransform(str);
+//            resultList.add(newValue);
+//        });
+//        System.out.println(resultList);
 
     }
+
+//     private static String lengthTransform(String str) {
+//          return  " Length for String : " + str  + " is " + str.length();
+//    }
+
 }

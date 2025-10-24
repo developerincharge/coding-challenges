@@ -11,25 +11,25 @@ public class FindNonRepeatedCharacterFromString {
 
         String str = "gainjavalnowledgeofstreamsapi";
 
-        char[] chars = str.toCharArray();
-        for (char ch : chars) {
-            int count = 0;
-            for (char ch1 : chars) {
-                if (ch == ch1) {
-                    count++;
-                }
-            }
-            if (count == 1) {
-                System.out.println("First Non repeated character is : " + ch);
-            }
-        }
-
-        System.out.println("##################################################");
-
-        String.join("", str.split(""))
-                .chars()
-                .filter(ch -> str.indexOf(ch) == str.lastIndexOf(ch))
-                .forEach(ch -> System.out.println("Non repeated character is : " + (char) ch));
+//        char[] chars = str.toCharArray();
+//        for (char ch : chars) {
+//            int count = 0;
+//            for (char ch1 : chars) {
+//                if (ch == ch1) {
+//                    count++;
+//                }
+//            }
+//            if (count == 1) {
+//                System.out.println("First Non repeated character is : " + ch);
+//            }
+//        }
+//
+//        System.out.println("##################################################");
+//
+//        String.join("", str.split(""))
+//                .chars()
+//                .filter(ch -> str.indexOf(ch) == str.lastIndexOf(ch))
+//                .forEach(ch -> System.out.println("Non repeated character is : " + (char) ch));
 
         LinkedHashMap<String, Long> collect = Arrays.stream(str.split(""))
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
