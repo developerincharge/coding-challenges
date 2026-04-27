@@ -35,7 +35,10 @@ public class FindEmployeeWithHighestSalary {
         System.out.println();
          System.out.println("================ Highest Max Salary  ==================\n");
 
-        employees.stream().max((e1, e2) -> e1.getSalary() > e2.getSalary() ? 1 : -1).ifPresent(System.out::println);
+        employees.stream()
+                .max((e1, e2) ->
+                        e1.getSalary() > e2.getSalary() ? 1 : -1)
+                .ifPresent(System.out::println);
 
         System.out.println();
         System.out.println("===== Function to find Max salaried Employees by comparing Salary =====\n");
@@ -112,8 +115,14 @@ public class FindEmployeeWithHighestSalary {
         System.out.println();
         System.out.println("=== Overriding Comparator method using SortEmployeeBySalaryDesc() from other class ===\n");
 
-        //employees.sort(new SortEmployeeBySalaryAsc());
         employees.sort(new SortEmployeeBySalaryDesc());
+        employees.forEach(System.out::println);
+
+        System.out.println();
+        System.out.println("=== Overriding Comparator method using SortEmployeeBySalaryAsc() from other class ===\n");
+
+        employees.sort(new SortEmployeeBySalaryAsc());
+
         employees.forEach(System.out::println);
     }
 }

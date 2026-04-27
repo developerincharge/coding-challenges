@@ -33,6 +33,5 @@ public class FindMaxOrMinOrLargestNumber {
                 .getAsInt();
         System.out.println("Minimum  number is :  "+min);
 
-
     }
 }

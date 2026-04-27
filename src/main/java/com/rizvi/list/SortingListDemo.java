@@ -3,6 +3,7 @@ package com.rizvi.list;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SortingListDemo {
@@ -11,9 +12,14 @@ public class SortingListDemo {
 
         List<String> names = Arrays.asList("Syed", "Rifat", "Karan", "ali", "Vivek", "Mohammad", "Imtiaz", "zaidi");
 
-        System.out.println("\nSorting with normal for loop");
+        System.out.println("\nPrinting with normal for loop");
         for(String name : names){
             System.out.print(" "+name);
+        }
+        System.out.println("\nSorting with Traditional for loop");
+
+        for(int i= 0; i < names.toArray().length/2; i++){
+
         }
 
         System.out.println("\nSorting with naturalOrder()  using Comparator");
@@ -25,6 +31,17 @@ public class SortingListDemo {
 
         names.sort(String.CASE_INSENSITIVE_ORDER);
         System.out.println(names);
+
+        System.out.println("\nSorting with Stream APi methods");
+        List<String> sortedNames = names.stream().sorted().distinct().map(String::valueOf).toList();
+        System.out.println(sortedNames);
+
+        System.out.println("\nSorting with CompareTo method ");
+                List<String> namesToSort = names.stream()
+
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        System.out.println(namesToSort);
     }
 
 }

@@ -27,7 +27,7 @@ public class CharacterFrequency {
                   }
               }
               if (chars[i] != '0') {
-                  System.out.print("  Letter:  "+ chars[i] + " ->  " + count+" ,");
+                  System.out.print(" Letter :"+ chars[i] +" -> " + count+"(times) ");
               }
           }
 
@@ -37,7 +37,7 @@ public class CharacterFrequency {
                //  java 8 stream API
 
           String str1 = "hello world";
-        IntStream stream =  str.chars();
+        IntStream stream =  str1.chars();
         Map<Character,Long> characterMap = stream.mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(
                         Function.identity(), Collectors.counting()));

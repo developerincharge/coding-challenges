@@ -1,6 +1,6 @@
 package com.rizvi.integers;
 
-public class Factorial {
+class Factorial {
 
     public static int factorial(int n) {
 

@@ -26,28 +26,30 @@ public class ComparatorDemo {
         //1. Sort the strings based on their length in ascending order
         List<String> fruits = Arrays.asList("apple", "cherry", "banana", "pineapple", "kiwi", "elderberry");
 
-//        fruits.sort(Comparator.comparingInt(String::length));
-        Collections.sort(fruits, Comparator.comparingInt(String::length));
+        fruits.sort(Comparator.comparingInt(String::length));
+//        Collections.sort(fruits, Comparator.comparingInt(String::length));
 
         System.out.println("fruits "+fruits);
-
 
         // 2.Sort the list of integers in descending order and print the result
 
         List<Integer> nums = Arrays.asList(3,2,90,34,21,12);
+        nums.sort(Comparator.naturalOrder());
+        System.out.println("nums in natural order : "+nums);
         nums.sort(Comparator.reverseOrder());
-
         System.out.println("nums in reverse order : "+nums);
-
 
         // 3.Sort the list of employees based on their age in ascending order and print the result
 
-        List<Employee> employees = Arrays.asList(new Employee(1, "Varsha", 28, "IT", 5000),
+        List<Employee> employees = Arrays.asList(
+                new Employee(1, "Varsha", 28, "IT", 5000),
                 new Employee(2, "Harsha", 21, "DEV",4000),
                 new Employee(3, "Tony", 21, "QA",1000),
                 new Employee(4, "Ramesh", 30, "BA",5000));
 
-        employees.sort(Comparator.comparingInt(Employee::getAge));
+        //employees.sort(Comparator.comparingInt(Employee::getAge));
+        Collections.sort(employees, Comparator.comparingInt(Employee::getAge));
+
         System.out.println("employees based on age "+employees);
 
 
