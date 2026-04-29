@@ -17,7 +17,4 @@ public class UniqueCharacters {
         }
         System.out.printf("Character String has  %d unique value " , unique.size());
     }
-
-
-
 }
